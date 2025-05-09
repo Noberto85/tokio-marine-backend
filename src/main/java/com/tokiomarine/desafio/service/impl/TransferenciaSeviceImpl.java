@@ -18,6 +18,7 @@ public class TransferenciaSeviceImpl implements TransferenciaSevice {
     private final ModelMapper mapper;
     private final TransferenciaRepository repository;
 
+    @Override
     public Transferencia agendarTransferencia(final TransferenciaRequestDto transferenciaDto) {
         long dias = ChronoUnit.DAYS.between(transferenciaDto.getDataAgendamento(),
             LocalDate.now());
