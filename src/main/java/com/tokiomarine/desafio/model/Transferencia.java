@@ -5,9 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,10 +39,15 @@ public class Transferencia {
     private BigDecimal valor;
 
     @Column(nullable = false)
-    private LocalDate dataTransferencia;
+    private LocalDateTime dataTransferencia;
 
     @Column(nullable = false)
     private LocalDate dataAgendamento;
 
     private BigDecimal taxa;
+
+    @PrePersist
+    public void setUp(){
+        this.dataTransferencia = LocalDateTime.now();
+    }
 }

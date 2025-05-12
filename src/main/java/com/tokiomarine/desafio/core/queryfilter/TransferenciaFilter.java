@@ -10,11 +10,9 @@ import org.springframework.data.jpa.domain.Specification;
 @Data
 public class TransferenciaFilter {
 
-    private String contaOrigem;
-
-    private String contaDestino;
+    private String search;
 
     public Specification<Transferencia> toSpecification() {
-        return contOrigemLike(contaOrigem).or(contDestinoLike(contaDestino));
+        return contOrigemLike(search).or(contDestinoLike(search));
     }
 }
